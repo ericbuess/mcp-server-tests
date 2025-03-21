@@ -1,7 +1,56 @@
-## before returning to the user
-- get all tests to pass
-- update CLAUDE.md with project structure changes, reorganization for clarity, task notes/completions, new tasks, etc. Ensure CLAUDE.md contains all necessary information for an llm to continue working on the project if it's context was wiped.
-- ensure proper .gitignore, git add -A, commit, and push to github
+## Checklist before returning to the user
+- [ ] Get all tests to pass
+- [ ] Update CLAUDE.md with project structure changes
+- [ ] Reorganize documentation for clarity
+- [ ] Add task notes/completions and track progress
+- [ ] Ensure CLAUDE.md contains all necessary information for continuation
+- [ ] Create proper .gitignore
+- [ ] Commit and push to github
+
+# Implementation Tracking
+
+## Project Setup
+- [ ] Create project directory structure
+- [ ] Initialize npm project (`npm init -y`)
+- [ ] Install core dependencies (`@modelcontextprotocol/sdk`)
+- [ ] Install TypeScript & types 
+- [ ] Initialize TS config
+- [ ] Configure package.json scripts
+- [ ] Create .gitignore file
+
+## Server Implementation
+- [ ] Implement server capabilities & initialization
+- [ ] Implement tools
+  - [ ] Create quick tool (quickEcho)
+  - [ ] Create long-running tool with progress updates
+- [ ] Implement resources
+  - [ ] Static resource implementation
+  - [ ] Live/subscription resource implementation
+- [ ] Implement prompts
+- [ ] Implement roots
+- [ ] Implement sampling
+- [ ] Implement logging & notifications
+
+## Mock WebSocket Feed
+- [ ] Create mock WebSocket feed for simulating data streams
+
+## Testing & Connection
+- [ ] Build the project
+- [ ] Configure Claude Desktop to use the server
+- [ ] Test all functionality
+
+## Project Structure
+```
+mcp-super-server/
+├── package.json
+├── tsconfig.json
+├── .gitignore
+├── README.md
+├── src/
+│   ├── server.ts     # Main MCP server implementation
+│   └── mockWs.ts     # Mock WebSocket feed
+└── dist/             # Compiled JavaScript output
+```
 
 # MCP Server Tests
 
