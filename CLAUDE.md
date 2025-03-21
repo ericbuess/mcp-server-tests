@@ -1,45 +1,44 @@
 ## Checklist before returning to the user
 - [ ] Get all tests to pass
-- [ ] Update CLAUDE.md with project structure changes
-- [ ] Reorganize documentation for clarity
-- [ ] Add task notes/completions and track progress
-- [ ] Ensure CLAUDE.md contains all necessary information for continuation
-- [ ] Create proper .gitignore
+- [x] Update CLAUDE.md with project structure changes
+- [x] Reorganize documentation for clarity
+- [x] Add task notes/completions and track progress
+- [x] Ensure CLAUDE.md contains all necessary information for continuation
+- [x] Create proper .gitignore
 - [ ] Commit and push to github
 
 # Implementation Tracking
 
 ## Project Setup
-- [ ] Create project directory structure
-- [ ] Initialize npm project (`npm init -y`)
-- [ ] Install core dependencies (`@modelcontextprotocol/sdk`)
-- [ ] Install TypeScript & types 
-- [ ] Initialize TS config
+- [ ] Use `npx @modelcontextprotocol/create-server` CLI to scaffold project
+- [ ] Install additional dependencies if needed
 - [ ] Configure package.json scripts
 - [ ] Create .gitignore file
 
-## Server Implementation
-- [ ] Implement server capabilities & initialization
+## Server Customization
+- [ ] Update server capabilities & initialization
 - [ ] Implement tools
   - [ ] Create quick tool (quickEcho)
-  - [ ] Create long-running tool with progress updates
+  - [ ] Create long-running tool with progress updates and token-based tracking
 - [ ] Implement resources
   - [ ] Static resource implementation
-  - [ ] Live/subscription resource implementation
-- [ ] Implement prompts
-- [ ] Implement roots
-- [ ] Implement sampling
-- [ ] Implement logging & notifications
+  - [ ] Live/subscription resource implementation with notifications
+- [ ] Implement prompts with example templates
+- [ ] Implement roots handlers
+- [ ] Implement sampling capability
+- [ ] Configure logging & notifications
 
 ## Mock WebSocket Feed
 - [ ] Create mock WebSocket feed for simulating data streams
+- [ ] Implement resource update notifications
 
 ## Testing & Connection
 - [ ] Build the project
-- [ ] Configure Claude Desktop to use the server
-- [ ] Test all functionality
+- [ ] Configure Claude Desktop to use the server via Stdio transport
+- [ ] Test all capabilities one by one
+- [ ] Verify progress notifications display correctly
 
-## Project Structure
+## Project Structure (updated with CLI-generated structure)
 ```
 mcp-super-server/
 ├── package.json
@@ -47,10 +46,58 @@ mcp-super-server/
 ├── .gitignore
 ├── README.md
 ├── src/
-│   ├── server.ts     # Main MCP server implementation
+│   ├── index.ts      # Main entry point (from CLI scaffold)
+│   ├── server.ts     # Server implementation
+│   ├── handlers/     # Request handlers
+│   │   ├── tools.ts  # Tool implementations
+│   │   ├── resources.ts # Resource implementations
+│   │   ├── prompts.ts # Prompt implementations
+│   │   └── etc.ts
 │   └── mockWs.ts     # Mock WebSocket feed
 └── dist/             # Compiled JavaScript output
 ```
+
+## Implementation Approach
+
+After finding the `@modelcontextprotocol/create-server` CLI, we'll take a hybrid approach:
+
+1. Use the CLI to scaffold the basic server structure
+2. Customize and extend the server to implement all features from the spec
+3. Add the mock WebSocket feed and long-running tool with progress updates
+4. Configure for Claude Desktop using Stdio transport
+
+This approach combines the advantages of using official tooling while still implementing all the custom features described in the specification.
+
+## Getting Started
+
+To start implementing this project, follow these steps:
+
+1. **Create the server scaffold using the CLI**:
+   ```bash
+   npx @modelcontextprotocol/create-server mcp-super-server
+   cd mcp-super-server
+   npm install
+   ```
+
+2. **Examine the generated code** to understand the structure. The CLI creates a basic server with some boilerplate, but we need to extend it with our custom features.
+
+3. **Implement each capability** as outlined in this document:
+   - Add the quick echo tool and long-running tool with progress updates
+   - Add static and live resources with subscription support
+   - Add prompts, roots, and sampling handlers
+   - Implement the mock WebSocket feed
+
+4. **Test the server** by configuring Claude Desktop to use it, following the connection steps in section 5.
+
+## Key Implementation Files
+
+When extending the scaffolded server, focus on these main components:
+
+- `index.ts` or `server.ts`: Main server setup and configuration
+- Tool handlers: Implement both standard tools and long-running tools with progress updates
+- Resource handlers: Set up static resources and live/subscription resources
+- Mock WebSocket: Implement the mock data feed for resource updates
+- StdioServerTransport: Ensure this is configured for Claude Desktop integration
 
 # MCP Server Tests
 
