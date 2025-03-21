@@ -1,11 +1,11 @@
 ## Checklist before returning to the user
-- [ ] Get all tests to pass
-- [x] Update CLAUDE.md with project structure changes
-- [x] Reorganize documentation for clarity
-- [x] Add task notes/completions and track progress
-- [x] Ensure CLAUDE.md contains all necessary information for continuation
-- [x] Create proper .gitignore
-- [x] Commit and push to github
+- 1. Get all tests to pass
+- 2. Update CLAUDE.md with project structure changes
+- 3. Reorganize documentation for clarity
+- 4. Add task notes/completions and track progress
+- 5. Ensure CLAUDE.md contains all necessary information for continuation even if the llm context is wiped
+- 6. Make sure .gitignore is up to date for any new files
+- 7. Commit and push to github
 
 # Implementation Tracking
 
@@ -98,6 +98,22 @@ When extending the scaffolded server, focus on these main components:
 - Resource handlers: Set up static resources and live/subscription resources
 - Mock WebSocket: Implement the mock data feed for resource updates
 - StdioServerTransport: Ensure this is configured for Claude Desktop integration
+
+## Reference Documentation
+
+This project includes comprehensive MCP documentation in the `modelcontextprotocol.io/` directory. These files contain valuable reference information but are quite large.
+
+**Important usage notes**:
+- These documentation files are too large to read in full at once
+- Use search tools (GrepTool, dispatch_agent) to find specific information first
+- Extract only relevant chunks to avoid overwhelming your context
+- Key files include:
+  - `create-typescript-server.md` - CLI tool documentation
+  - `typescript-sdk.md` - SDK reference
+  - `servers.md` - General server implementation guidance
+  - `specification.md` - MCP protocol specification
+
+When implementing specific features, search these docs for relevant examples and API details rather than trying to read them completely.
 
 # MCP Server Tests
 
